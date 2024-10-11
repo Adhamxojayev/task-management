@@ -19,15 +19,15 @@ CREATE TABLE users (
 CREATE TABLE organizations (
   id UUID NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  created_by UUID REFERENCES Users(id),
+  created_by UUID REFERENCES users(id),
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
 
 CREATE TABLE organization_user (
   id UUID NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
-  org_id UUID REFERENCES Organizations(id) ON DELETE CASCADE,
-  user_id UUID REFERENCES Users(id) ON DELETE CASCADE,
+  org_id UUID REFERENCES organizations(id) ON DELETE CASCADE,
+  user_id UUID REFERENCES users(id) ON DELETE CASCADE,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -35,7 +35,7 @@ CREATE TABLE organization_user (
 CREATE TABLE projects (
   id UUID NOT NULL DEFAULT uuid_generate_v4() PRIMARY KEY,
   org_id UUID REFERENCES organizations(id) ON DELETE CASCADE,
-  created_by UUID REFERENCES Users(id),
+  created_by UUID REFERENCES users(id),
   name VARCHAR(255) NOT NULL,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
