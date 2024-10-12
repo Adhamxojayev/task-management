@@ -26,4 +26,8 @@ export class OrganizationService {
   async attachStaffOrganization(organization: dto.AttachStaffOrganizationDto): Promise< dto.AttachStaffOrganizationDto > {
     return this.model.attachStaffOrganization(organization);
   }
+
+  async getAOrganizationUser(): Promise< dto.OrganizationUserDto[] > {
+    return this.model.getAOrganizationUser();
+  }
 }

@@ -46,7 +46,7 @@ CREATE TABLE tasks (
     created_by UUID REFERENCES users(id) ON DELETE SET NULL,
     project_id UUID REFERENCES projects(id) ON DELETE CASCADE,
     worker_user_id UUID REFERENCES users(id) ON DELETE SET NULL, 
-    status enum_status NOT NULL,
+    status enum_status NOT NULL DEFAULT 'CREATED',
     due_date TIMESTAMPTZ,                                    
     done_at TIMESTAMPTZ,                                   
     created_at TIMESTAMPTZ DEFAULT NOW()

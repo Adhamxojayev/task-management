@@ -44,4 +44,11 @@ export class OrganizationController {
     return this.service.attachStaffOrganization(organization)
   }
 
+  @Get('user')
+  @ApiOperation({ summary: 'get organization user' })
+  @ApiResponse({ type: dto.OrganizationUserDto, isArray: true })
+  getAOrganizationUser(): Promise< dto.OrganizationUserDto[] > {
+    return this.service.getAOrganizationUser()
+  }
+
 }
