@@ -41,4 +41,19 @@ export class AttachStaffOrganizationDto {
 	@IsUUID()
   created_by: string;
 }
+export class OrganizationUserDto {
+  @ApiProperty()
+  id: string;
 
+  @ApiProperty()
+  orgId: string;
+
+  @ApiProperty()
+  organizationName: string;
+
+  @ApiProperty()
+  userId: string;
+
+  @ApiProperty()
+  userName: string;
+}

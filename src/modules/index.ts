@@ -5,13 +5,15 @@ import { AdminRoleCheckMiddleware } from 'src/common/middlewares/check-role.midd
 import { OrganizationController } from './organization/organization.controller';
 import { UserController } from './user/user.controller';
 import { ProjectModule } from './project/project.module';
+import { TaskModule } from './task/task.module';
 
 
 @Module({
   imports: [
     UserModule,
 		OrganizationModule,
-    ProjectModule
+    ProjectModule,
+    TaskModule,
   ],
 })
 export class Modules {
