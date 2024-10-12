@@ -23,4 +23,4 @@ const dbProvider = {
   providers: [dbProvider, PostgresClient],
   exports: [dbProvider, PostgresClient],
 })
-export class dbModule {}
+export class DBModule {}
