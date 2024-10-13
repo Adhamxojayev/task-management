@@ -27,7 +27,11 @@ export class OrganizationService {
     return this.model.attachStaffOrganization(organization);
   }
 
-  async getAOrganizationUser(): Promise< dto.OrganizationUserDto[] > {
-    return this.model.getAOrganizationUser();
+  async getOrganizationUser(): Promise< dto.OrganizationUserDto[] > {
+    return this.model.getOrganizationUser();
+  }
+
+  async getOrganizationUserByIdTasks(userId: string): Promise< dto.OrganizationUserTasksDto[] > {
+    return this.model.getOrganizationUserByIdTasks(userId);
   }
 }

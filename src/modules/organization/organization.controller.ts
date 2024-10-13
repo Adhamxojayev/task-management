@@ -47,8 +47,15 @@ export class OrganizationController {
   @Get('user')
   @ApiOperation({ summary: 'get organization user' })
   @ApiResponse({ type: dto.OrganizationUserDto, isArray: true })
-  getAOrganizationUser(): Promise< dto.OrganizationUserDto[] > {
-    return this.service.getAOrganizationUser()
+  getOrganizationUser(): Promise< dto.OrganizationUserDto[] > {
+    return this.service.getOrganizationUser()
+  }
+
+  @Get('user/:id')
+  @ApiOperation({ summary: 'get tasks with organization user id' })
+  @ApiResponse({ type: dto.OrganizationUserTasksDto, isArray: true })
+  getOrganizationUserByIdTasks(@Param('id', new ParseUUIDPipe()) userId: string): Promise< dto.OrganizationUserTasksDto[] > {
+    return this.service.getOrganizationUserByIdTasks(userId)
   }
 
 }
