@@ -1,6 +1,5 @@
-CREATE extension IF NOT EXISTS "uuid-ossp";
-ALTER DATABASE postgres SET timezone TO 'Asia/Tashkent';
 CREATE DATABASE task_management;
+CREATE extension IF NOT EXISTS "uuid-ossp";
 
 
 CREATE TYPE enum_role as enum('ADMIN', 'MANAGER', 'STAFF');
