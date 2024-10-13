@@ -6,6 +6,7 @@ import { OrganizationController } from './organization/organization.controller';
 import { UserController } from './user/user.controller';
 import { ProjectModule } from './project/project.module';
 import { TaskModule } from './task/task.module';
+import { StatisticsModule } from './statistics/stat.module';
 
 
 @Module({
@@ -14,6 +15,7 @@ import { TaskModule } from './task/task.module';
 		OrganizationModule,
     ProjectModule,
     TaskModule,
+    StatisticsModule,
   ],
 })
 export class Modules {
