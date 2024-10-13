@@ -57,3 +57,23 @@ export class OrganizationUserDto {
   @ApiProperty()
   userName: string;
 }
+
+export class OrganizationUserTasksDto {
+  @ApiProperty()
+  id: string;
+
+  @ApiProperty()
+  project_name: string;
+
+  @ApiProperty()
+  status: string;
+
+  @ApiProperty()
+  due_date: Date;
+
+  @ApiProperty()
+  done_at: Date;
+
+  @ApiProperty()
+  time_taken: string;
+}

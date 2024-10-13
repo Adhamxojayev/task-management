@@ -64,7 +64,32 @@ export class OrganizationQuery {
     JOIN users u ON u.id = ou.user_id
   `;
 
-  getAOrganizationUser(): Promise< dto.OrganizationUserDto[] > {
+  getOrganizationUser(): Promise< dto.OrganizationUserDto[] > {
     return this.db.fetchAll(this.GET_ORGANIZATION_USER)
+  }
+
+  private GET_ORGANIZATION_USER_BY_ID = `
+    SELECT
+      t.id,
+      p.name AS project_name,
+      t.status,
+      t.due_date,
+      t.done_at,
+      CONCAT(
+        EXTRACT(DAY FROM (due_date - done_at)), ' days, ',
+        EXTRACT(HOUR FROM (due_date - done_at)), ' hours, ',
+        EXTRACT(MINUTE FROM (due_date - done_at)), ' minutes, ',
+        EXTRACT(SECOND FROM (due_date - done_at)), ' seconds'
+    ) AS time_taken
+    FROM tasks t
+    JOIN projects p ON t.project_id = p.id
+    JOIN organization_user ou ON t.worker_user_id = ou.user_id
+    JOIN users u ON ou.user_id = u.id
+    WHERE ou.user_id = $1
+    ORDER BY p.name, t.due_date;
+  `;
+
+  getOrganizationUserByIdTasks(userId: string): Promise< dto.OrganizationUserTasksDto[] > {
+    return this.db.fetchAll(this.GET_ORGANIZATION_USER_BY_ID, userId)
   }
 }
